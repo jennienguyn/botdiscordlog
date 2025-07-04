@@ -1,37 +1,37 @@
 # 🧠 Discord Logger Bot
 
-Bot Discord ghi lại toàn bộ tin nhắn trong tất cả các kênh và gửi embed vào một kênh log (hoặc thực hiện các hành động tùy chỉnh khác).
+Bot Discord này được thiết kế để ghi lại **toàn bộ các hoạt động tin nhắn và cập nhật kênh quan trọng** trong server của bạn. Bot sẽ gửi các thông báo chi tiết dưới dạng embed vào một kênh log chuyên dụng trên Discord, đồng thời lưu trữ các log này vào **các tệp `.txt` riêng biệt theo ngày** trên máy chủ của bạn.
+
+---
 
 ## 📌 Tính năng
 
-- 📝 Ghi lại toàn bộ tin nhắn trong server
-- 🕒 Thêm timestamp theo múi giờ `Asia/Bangkok`
-- 📋 Hiển thị embed nội dung tin nhắn, user gửi, kênh gửi
-- 🔒 Tự động lọc bỏ bot messages và DMs
+- 💬 **Ghi log Tin nhắn mới**: Ghi lại nội dung tin nhắn, tác giả và kênh cho mọi tin nhắn mới.
+- 🗑️ **Ghi log Tin nhắn bị xóa**: Theo dõi và ghi lại nội dung, tác giả và kênh của tin nhắn đã bị xóa.
+- ✏️ **Ghi log Tin nhắn đã chỉnh sửa**: Ghi lại nội dung trước và sau khi chỉnh sửa, tác giả và kênh.
+- 📁 **Ghi log Cập nhật Kênh**: Ghi lại các thay đổi về tên của các kênh văn bản trong server.
+- 🕒 **Dấu thời gian chính xác**: Tất cả các log đều bao gồm dấu thời gian theo múi giờ `Asia/Bangkok`.
+- 📋 **Hiển thị Embed trực quan**: Gửi các thông báo log dưới dạng embed đẹp mắt và dễ đọc vào kênh Discord được chỉ định.
+- 💾 **Lưu trữ Log cục bộ**: Tự động lưu các log chi tiết vào các tệp `.txt` riêng biệt cho từng ngày trong thư mục `logs/`.
+- 🔒 **Tự động lọc**: Bỏ qua các tin nhắn và hoạt động từ chính bot hoặc các bot khác để tránh log lặp.
+
+---
 
 ## ⚙️ Yêu cầu
 
-- Python `>=3.10`
-- Các thư viện sau:
+- **Python `>=3.10`**
+- Các thư viện Python sau:
 
 ```bash
 pip install -r requirements.txt
-````
-
-Nội dung `requirements.txt`:
-
-```
-discord.py>=2.3.2
-tzdata
-```
 
 ## 🚀 Hướng dẫn chạy bot
 
 1. Clone source về:
 
    ```bash
-   git clone https://github.com/<your-username>/<your-repo>.git
-   cd <your-repo>
+   git clone https://github.com/jennienguyn/botdiscordlog.git
+   cd botdiscordlog
    ```
 
 2. Tạo file `.env` hoặc đặt token trong biến môi trường:
