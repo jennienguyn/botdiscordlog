@@ -24,7 +24,7 @@ Bot Discord này được thiết kế để ghi lại **toàn bộ các hoạt 
 
 ```bash
 pip install -r requirements.txt
-
+```
 ## 🚀 Hướng dẫn chạy bot
 
 1. Clone source về:
