@@ -142,4 +142,28 @@ async def on_guild_channel_update(before, after):
                 color=discord.Color.blurple()
             )
             await log_channel.send(embed=embed)
+# Kích hoạt tất cả Intents cần thiết (bao gồm Server Members Intent)
+intents = discord.Intents.default()
+intents.members = True # Rất quan trọng: phải bật intents.members = True
+intents.message_content = True # Để bot có thể đọc tin nhắn (nếu cần cho các lệnh khác)
+
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Bot đã sẵn sàng với tên: {bot.user}')
+
+@bot.event
+async def on_member_join(member):
+    # Tìm kênh mà bạn muốn gửi tin nhắn chào mừng
+    # Bạn có thể tìm theo tên kênh hoặc ID kênh
+    # Ví dụ tìm theo ID kênh:
+    channel_id = 123456789012345678  # Thay thế bằng ID kênh thực tế của bạn
+    channel = bot.get_channel(channel_id)
+
+    if channel:
+        # Gửi tin nhắn chào mừng và mention người dùng mới
+        await channel.send(f'Chào mừng {member.mention} đã tham gia server! Mấy con vợ ra tiếp đón người mới cái :D')
+    else:
+        print(f"Không tìm thấy kênh với ID: {channel_id}")
 bot.run(TOKEN)
