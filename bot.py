@@ -158,7 +158,7 @@ async def on_member_join(member):
     # Tìm kênh mà bạn muốn gửi tin nhắn chào mừng
     # Bạn có thể tìm theo tên kênh hoặc ID kênh
     # Ví dụ tìm theo ID kênh:
-    channel_id = 123456789012345678  # Thay thế bằng ID kênh thực tế của bạn
+    channel_id = 1352641589037633637  # Thay thế bằng ID kênh thực tế của bạn
     channel = bot.get_channel(channel_id)
 
     if channel:
