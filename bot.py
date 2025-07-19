@@ -144,8 +144,8 @@ async def on_guild_channel_update(before, after):
             await log_channel.send(embed=embed)
 # Kích hoạt tất cả Intents cần thiết (bao gồm Server Members Intent)
 intents = discord.Intents.default()
-intents.members = True # Rất quan trọng: phải bật intents.members = True
-intents.message_content = True # Để bot có thể đọc tin nhắn (nếu cần cho các lệnh khác)
+intents.members = True # Bắt buộc
+intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -154,15 +154,19 @@ async def on_ready():
     print(f'Bot đã sẵn sàng với tên: {bot.user}')
 
 @bot.event
-async def on_member_join(member):
-    # Tìm kênh mà bạn muốn gửi tin nhắn chào mừng
-    # Bạn có thể tìm theo tên kênh hoặc ID kênh
-    channel_id = 1352641589037633637  # Thay thế bằng ID kênh thực tế của bạn
-    channel = bot.get_channel(channel_id)
+async def on_member_update(before, after):
+    # Kiểm tra nếu role "member" được thêm vào
+    member_role_id = 1352646984846147664
+    welcome_channel_id = 1352641589037633637 
 
-    if channel:
-        # Gửi tin nhắn chào mừng và mention người dùng mới
-        await channel.send(f'Chào mừng {member.mention} đã tham gia server! Hãy đọc luật và tận hưởng nhé.')
-    else:
-        print(f"Không tìm thấy kênh với ID: {channel_id}")
+    # Kiểm tra xem role "member" có trong 'after.roles' nhưng không có trong 'before.roles' không
+    if not discord.utils.get(before.roles, id=member_role_id) and \
+       discord.utils.get(after.roles, id=member_role_id):
+
+        channel = bot.get_channel(welcome_channel_id)
+        if channel:
+            welcome_message = f'Chào mừng {after.mention} đã đến với server! Mấy con vợ ra tiếp đón cái nào :D'
+            await channel.send(welcome_message)
+        else:
+            print(f"Không tìm thấy kênh chào mừng với ID: {welcome_channel_id}")
 bot.run(TOKEN)
