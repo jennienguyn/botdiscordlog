@@ -157,13 +157,12 @@ async def on_ready():
 async def on_member_join(member):
     # Tìm kênh mà bạn muốn gửi tin nhắn chào mừng
     # Bạn có thể tìm theo tên kênh hoặc ID kênh
-    # Ví dụ tìm theo ID kênh:
     channel_id = 1352641589037633637  # Thay thế bằng ID kênh thực tế của bạn
-    channel = bot.get_channel(1352641589037633637)
+    channel = bot.get_channel(channel_id)
 
     if channel:
         # Gửi tin nhắn chào mừng và mention người dùng mới
-        await channel.send(f'Chào mừng {member.mention} đã tham gia server! Mấy con vợ ra tiếp đón người mới cái :D')
+        await channel.send(f'Chào mừng {member.mention} đã tham gia server! Hãy đọc luật và tận hưởng nhé.')
     else:
-        print(f"Không tìm thấy kênh với ID: 1352641589037633637")
+        print(f"Không tìm thấy kênh với ID: {channel_id}")
 bot.run(TOKEN)
