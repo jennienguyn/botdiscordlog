@@ -159,7 +159,7 @@ async def on_member_join(member):
     # Bạn có thể tìm theo tên kênh hoặc ID kênh
     # Ví dụ tìm theo ID kênh:
     channel_id = 1352641589037633637  # Thay thế bằng ID kênh thực tế của bạn
-    channel = bot.get_channel(channel_id)
+    channel = bot.get_channel(1352641589037633637)
 
     if channel:
         # Gửi tin nhắn chào mừng và mention người dùng mới
