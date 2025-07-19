@@ -165,5 +165,5 @@ async def on_member_join(member):
         # Gửi tin nhắn chào mừng và mention người dùng mới
         await channel.send(f'Chào mừng {member.mention} đã tham gia server! Mấy con vợ ra tiếp đón người mới cái :D')
     else:
-        print(f"Không tìm thấy kênh với ID: {channel_id}")
+        print(f"Không tìm thấy kênh với ID: 1352641589037633637")
 bot.run(TOKEN)
